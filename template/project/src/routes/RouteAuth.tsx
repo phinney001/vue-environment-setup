@@ -120,7 +120,7 @@ const router = createRouter({
 // 路由守卫
 router.beforeEach(({ matched, name, meta, path }, from, next) => {
   // 设置标题
-  document.title = `${config.title} - ${String(name)}`
+  document.title = `${config.title} - ${String(name || meta.title)}`
 
   // 没有登录重定向登录页
   if (meta.layout === 'user' && !isLogin()) {
