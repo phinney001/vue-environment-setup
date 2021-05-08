@@ -39,22 +39,6 @@ const routes: RouteProps[] = [
     icon: <DashboardOutlined />,
     component: Kanban,
   },
-  {
-    name: '设置',
-    path: '/setting',
-    icon: <SettingOutlined />,
-    routes: [
-      {
-        path: '/setting/user',
-        name: '用户设置',
-        component: defineComponent(() => () => {
-          return (
-            <span>2332</span>
-          )
-        }),
-      }
-    ]
-  },
 ]
 
 

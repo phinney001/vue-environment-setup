@@ -29,10 +29,10 @@ npm run serve
 ```
 
 ## 环境和依赖
-- node
-- vite
-- vue
-- [ant-design-vue](https://2x.antdv.com/components/overview-cn) - Ant Design Vue
+- [Node](https://nodejs.org/en)
+- [Vite](https://cn.vitejs.dev)
+- [Vue](https://v3.cn.vuejs.org)
+- [Ant-Design-Vue](https://2x.antdv.com/components/overview-cn)
 
 ## 目录结构
 - public `公共目录`

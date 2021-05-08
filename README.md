@@ -8,7 +8,8 @@
 `vue-environment-setup` 用于Vue项目自动化创建，依赖于:
 + [Node](https://nodejs.org/en)
 + [Vite](https://cn.vitejs.dev)
-+ [ant-design-vue](https://2x.antdv.com/docs/vue/introduce-cn)
++ [Vue](https://v3.cn.vuejs.org)
++ [Ant-Design-Vue](https://2x.antdv.com/docs/vue/introduce-cn)
 
 # 环境
   ```bash

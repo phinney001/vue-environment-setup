@@ -14,7 +14,7 @@ export default {
   description: 'PROJECTNAME',
   logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   logoShort: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
-  copyright: 'Copyright ©2021 代代环境技术部出品 v4.13.0',
+  copyright: 'Copyright ©2021 可见科技有限公司技术部出品 v2.1.2',
   avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
   waterMark: ''
 }
