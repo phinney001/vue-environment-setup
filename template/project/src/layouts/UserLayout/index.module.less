@@ -1,0 +1,180 @@
+@import '@/theme.less';
+
+// 页面布局
+.pageLayout {
+  min-height: 100vh !important;
+}
+
+// 侧边栏
+.pageSider {
+  position: fixed !important;
+  left: 0;
+  top: 0;
+  z-index: @page-sider-zIndex;
+  height: 100%;
+  overflow: auto;
+
+  .pageLogo {
+    display: flex;
+    align-items: center;
+    box-sizing: content-box;
+    height: @page-logo-height;
+    padding: @page-logo-padding;
+    background: @page-logo-background;
+    transition: @sider-collapsed-transition;
+
+    img {
+      height: @page-logo-height;
+    }
+
+    h1 {
+      margin: 0;
+      word-break: keep-all;
+      overflow: hidden;
+      margin-left: @page-logo-space;
+      color: @page-logo-color;
+      font-size: @page-logo-size;
+      font-weight: @page-logo-weight;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: @sider-scrollbar-width;
+    height: @sider-scrollbar-height;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: @sider-scrollbar-color;
+    border-radius: @sider-scrollbar-radius;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: @sider-scrollbar-background;
+    border-radius: @sider-scrollbar-radius;
+  }
+}
+
+// 页头
+.pageHeader {
+  position: fixed;
+  left: @page-sider-width;
+  width: calc(100% - @page-sider-width);
+  background: @page-header-background  !important;
+  z-index: @page-header-zIndex;
+  transition: @sider-collapsed-transition;
+
+  .pageHeaderMain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: @page-main-height;
+    box-shadow: @page-header-shadow;
+  }
+
+  .pageHeaderLeft {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .pageHeaderRight {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    // 用户信息
+    .pageUserInfo {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      cursor: pointer;
+      padding: @page-userinfo-padding;
+      transition: @page-userinfo-transition;
+
+      &:hover {
+        background: @page-userinfo-hover;
+      }
+    }
+
+    // 头像
+    .pageAvatar {
+      object-fit: cover;
+      width: @page-avatar-size;
+      height: @page-avatar-size;
+      border-radius: @page-avatar-radius;
+    }
+
+    // 用户名
+    .pageUserName {
+      font-weight: normal;
+      line-height: normal;
+      font-size: @page-username-size;
+      color: @page-username-color;
+      margin-left: @page-username-space;
+    }
+  }
+
+  // 面包屑
+  .pageBreadcrumb {
+    display: flex;
+    align-items: center;
+    line-height: normal;
+    padding: @page-breadcrumb-padding;
+  }
+
+  // 页面标题
+  .pageTitle {
+    margin: 0;
+    line-height: @page-title-height;
+    font-size: @page-title-size;
+    font-weight: @page-title-weight;
+    color: @page-title-color;
+    padding: @page-title-padding;
+  }
+}
+
+// 用户信息下拉框
+.pageDropdownMenu {
+  width: @page-dropdown-width;
+}
+
+// 内容
+.pageContent {
+  width: calc(100% - @page-sider-width);
+  margin-left: @page-sider-width;
+  margin-top: @layout-header-height;
+  min-height: @page-content-min-height;
+  padding: @page-content-padding;
+  transition: @sider-collapsed-transition;
+}
+
+// 页脚
+.pageFooter {
+  width: calc(100% - @page-sider-width);
+  margin-left: @page-sider-width;
+  text-align: center;
+  color: @page-footer-color  !important;
+  font-size: @page-footer-size  !important;
+  transition: @sider-collapsed-transition;
+}
+
+
+// 菜单收起
+:global {
+  .ant-layout-sider-collapsed .ant-layout-sider-children a {
+    justify-content: center;
+  }
+
+  .ant-layout-sider-collapsed+.ant-layout {
+    .ant-layout-header {
+      left: @page-sider-collapsed-width;
+      width: calc(100% - @page-sider-collapsed-width);
+    }
+
+    .ant-layout-content,
+    .ant-layout-footer {
+      width: calc(100% - @page-sider-collapsed-width);
+      margin-left: @page-sider-collapsed-width;
+    }
+  }
+}

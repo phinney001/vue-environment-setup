@@ -1,0 +1,76 @@
+@import '@/theme.less';
+
+.passportContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: auto;
+  background: @passport-background;
+}
+
+.passportContent {
+  flex: 1;
+  padding: @passport-padding;
+}
+
+.passportTop {
+  text-align: center;
+
+  .passportHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  // 图标
+  .passportLogo {
+    height: @passport-title-height;
+    margin-right: @passport-title-space;
+    vertical-align: top;
+  }
+
+  // 标题
+  .passportTitle {
+    margin: 0;
+    line-height: normal;
+    color: @passport-title-color;
+    font-weight: @passport-title-weight;
+    font-size: @passport-title-size;
+  }
+
+  // 描述
+  .passportDesc {
+    margin: @passport-description-margin;
+    color: @passport-description-color;
+    font-size: @passport-description-size;
+  }
+}
+
+// 页脚
+.passportFooter {
+  width: 100%;
+  text-align: center;
+  color: @page-footer-color  !important;
+  font-size: @page-footer-size  !important;
+  transition: @sider-collapsed-transition;
+}
+
+// 内容
+.passportMain {
+  width: @passport-content-width;
+  margin: 0 auto;
+
+  @media screen and (max-width: 576px) {
+    width: 95%;
+  }
+}
+
+@media (min-width: 768px) {
+  .passportContainer {
+    background-image: @passport-backgroundImage;
+    background-repeat: no-repeat;
+    background-position: @passport-backgroundPosition;
+    background-size: 100%;
+  }
+}
