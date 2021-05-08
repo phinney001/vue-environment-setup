@@ -1,6 +1,6 @@
 {
   "name": "vue-environment-setup",
-  "version": "1.0.41",
+  "version": "1.0.1",
   "description": "vue-environment-setup",
   "main": "init.js",
   "scripts": {
