@@ -126,11 +126,11 @@ export interface ActionRefProps {
 
 /**
  * 一体化表格refs接口
- * @param filterform 搜索表单实例
+ * @param filterForm 搜索表单实例
  * @param actionRef 表格实例
  */
 export interface IntegrationTableRefs {
-  filterform?: any
+  filterForm?: any
   actionRef?: ActionRefProps
 }
 
@@ -218,6 +218,7 @@ const IntegrationTable = defineComponent((props, { attrs }: { attrs: Integration
       onClick: ({ values }: any) => {
         getTableData({
           ...tablePagination.value,
+          current: 1,
           ...values
         })
       }
@@ -227,6 +228,7 @@ const IntegrationTable = defineComponent((props, { attrs }: { attrs: Integration
       onClick: ({ values }: any) => {
         getTableData({
           ...tablePagination.value,
+          current: 1,
           ...values
         })
       }
