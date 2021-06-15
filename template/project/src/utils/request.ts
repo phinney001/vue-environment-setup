@@ -1,6 +1,7 @@
 import { getToken, toLogin } from '@/access'
 import { message, notification } from 'ant-design-vue'
 import { getString, isFunction, objectMerge } from 'phinney-toolkit'
+import moment from 'moment'
 
 /**
  * 请求配置
@@ -58,6 +59,10 @@ class Http {
    * @param options 请求配置
    */
   requestBefore(url = '', options: RequestOption = {}): Request {
+    // moment日期少一天解决
+    moment.fn.toISOString = function () {
+      return this.format('YYYY-MM-DDTHH:mm:ss.SSS[Z]')
+    }
     // 请求路径处理
     const newUrl = Object.entries({
       ...options?.params
