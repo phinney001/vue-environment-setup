@@ -34,7 +34,7 @@ const Kanban = defineComponent(() => {
   ]
 
   // 一体化表格props
-  const tablePorps: IntegrationTableProps = {
+  const tableProps: IntegrationTableProps = {
     rowKey: 'index',
     scroll: { x: 1000 },
     columns,
@@ -51,7 +51,7 @@ const Kanban = defineComponent(() => {
   })
 
   return () => (
-    <IntegrationTable {...tablePorps} />
+    <IntegrationTable {...tableProps} />
   )
 })
 
