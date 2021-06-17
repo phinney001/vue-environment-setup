@@ -1,9 +1,10 @@
 import { createApp, defineComponent } from 'vue'
 import router from './routes/RouteAuth'
 import store from './store'
-import './main.less'
-import zhCN from 'ant-design-vue/lib/locale/zh_CN'
 import antd, { ConfigProvider } from 'ant-design-vue'
+import zhCN from 'ant-design-vue/lib/locale/zh_CN'
+import 'moment/dist/locale/zh-cn'
+import './main.less'
 
 const app = createApp(defineComponent(() => () => (
   <ConfigProvider locale={zhCN}>
