@@ -358,7 +358,9 @@ const IntegrationTable = defineComponent((props, { attrs }: { attrs: Integration
     const modalProps = requestProps?.modalProps
     // 弹窗打开之前调用
     await modalProps?.openBefore?.(formValues.value)
-    const record = (await modalProps?.formValuesHandle?.(formValues.value)) || formValues.value
+    const record = {
+      ...((await modalProps?.formValuesHandle?.(formValues.value)) || formValues.value)
+    }
     // 动态表单元素
     const modalFormItems = modalProps?.formItems
     let modalFormContent: any
