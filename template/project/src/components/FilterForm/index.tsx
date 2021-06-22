@@ -55,7 +55,7 @@ const FilterForm = defineComponent((props, { attrs }: { attrs: FilterFormProps, 
   onRef?.({
     // 获取表单数据
     getFieldsValue: async () => {
-      const values = await filterForm?.value?.validateFields?.()
+      const values = await filterForm?.value?.getFieldsValue?.()
       return values
     },
     // 清除表单数据
@@ -113,7 +113,7 @@ const FilterForm = defineComponent((props, { attrs }: { attrs: FilterFormProps, 
       ...resetProps,
       onClick: async () => {
         filterForm?.value.resetFields?.()
-        const values = await filterForm?.value.validateFields?.()
+        const values = await filterForm?.value.getFieldsValue?.()
         resetProps?.onClick?.({ values, filterForm } as any)
       }
     },
@@ -248,13 +248,14 @@ const FilterForm = defineComponent((props, { attrs }: { attrs: FilterFormProps, 
         background: '#fff',
         padding: isInCard ? 0 : '24px',
         paddingBottom: (!collapsed.value || !(getArray(formItems)?.length % (order.value + 1))) ? '24px' : 0,
+        overflow: 'hidden'
       }}
     >
       <div ref={filterMain}>
         <div style={{
           width: collapsed.value ? '100%' : formWidth.value + 'px',
           height: collapsed.value ? 'auto' : '40px',
-          overflow: 'hidden'
+          overflow: btnShow.value ? 'initial': 'hidden'
         }}>
           <DynamicForm {...dynamicFormProps} formItems={getFormItems()} />
         </div>
