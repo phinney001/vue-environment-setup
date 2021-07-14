@@ -183,6 +183,7 @@ export default defineComponent((props: any, { slots, attrs }) => {
         <Menu
           theme="dark"
           mode="inline"
+          className={styles.pageMenu}
           defaultOpenKeys={getDefaultOpenKeys()}
           selectedKeys={[route.path]}
           onClick={({ key }: any) => {
