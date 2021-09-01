@@ -78,6 +78,7 @@ export interface ModalProps extends CustomModalProps {
  * @param modalProps 弹窗props
  * @param popProps 删除提示窗props
  * @param aProps a标签props方法
+ * @param effect 请求成功是否会影响数据数量
  */
 export interface RequestConfig {
   url?: string
@@ -97,6 +98,7 @@ export interface RequestConfig {
   modalProps?: ModalProps
   popProps?: any
   aProps?: (record: any) => any
+  effect?: boolean
   [key: string]: any
 }
 
@@ -120,7 +122,7 @@ export interface OperatingItem {
  * @param reset 清除过滤表单
  */
 export interface ActionRefProps {
-  reload?: (page?: number) => void
+  reload?: (page?: number, extraParams?: any) => void
   setSelected?: (keys: any) => void
   getSelected?: () => any[]
   getSelectedRows?: () => any[]
@@ -245,10 +247,12 @@ const IntegrationTable = defineComponent((props, { attrs }: { attrs: Integration
   // 表格实例
   const actionRef: ActionRefProps = {
     // 重新加载表格
-    reload: (current?: number) => {
+    reload: (current?: number, extraParams?: any) => {
       getTableData({
         ...tablePagination.value,
-        ...(isNumber(current) ? { current } : {})
+        ...filterForm.value?.getFieldsValue?.(),
+        ...(isNumber(current) ? { current } : {}),
+        ...extraParams,
       })
     },
     // 获取表格行选中项
@@ -312,7 +316,12 @@ const IntegrationTable = defineComponent((props, { attrs }: { attrs: Integration
             ...pagination,
           })
         }
-        otherProps.onChange?.(pagination, filters, sorter, extra)
+        otherProps.onChange?.(
+          { ...pagination, actionRef },
+          { ...filters, actionRef },
+          { ...sorter, actionRef },
+          { ...extra, actionRef },
+        )
       }
     }
   }
@@ -463,7 +472,11 @@ const IntegrationTable = defineComponent((props, { attrs }: { attrs: Integration
             )
             if (res) {
               hide()
-              actionRef.reload?.()
+              if (requestProps?.effect && tableData.value.length === 1) {
+                actionRef.reload?.(1)
+              } else {
+                actionRef.reload?.()
+              }
               message.success(requestProps?.successMsg || '操作成功！')
               formType.value = null
               formValues.value = null
@@ -693,7 +706,7 @@ const IntegrationTable = defineComponent((props, { attrs }: { attrs: Integration
             : data?.props?.btnText
           return getNumber(btnText?.length) * 14 + (index ? 20 : 0)
         },
-        16 * 2,
+        20 * 2,
       ),
       customRender: ({record}: any) => {
         return (
@@ -752,7 +765,7 @@ const IntegrationTable = defineComponent((props, { attrs }: { attrs: Integration
                             record,
                           )
                           if (res) {
-                            if (btnText?.includes('删除') && tableData.value.length === 1) {
+                            if ((item?.props?.effect || btnText?.includes('删除')) && tableData.value.length === 1) {
                               actionRef.reload?.(1)
                             } else {
                               actionRef.reload?.()
