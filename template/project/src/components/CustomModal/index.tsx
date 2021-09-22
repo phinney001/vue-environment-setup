@@ -100,6 +100,10 @@ const CustomModal = defineComponent(() => {
     if (!Reflect.has(options, 'width')) {
       options.width = 500
     }
+    // 全屏后挂载父级元素
+    if (document.fullscreenElement) {
+      options.getContainer= () => document.fullscreenElement
+    }
     // 取消
     options.onCancel = async (e: any) => {
       const bool = await onCancel?.(e, (props: any) => {
