@@ -67,7 +67,7 @@ class Http {
     const newUrl = Object.entries({
       ...options?.params
     }).reduce((t, [key, value]: any[], i) => {
-      return t += `${i ? '&' : '?'}${key}=${getString(value)}`
+      return t += `${i ? '&' : '?'}${key}=${encodeURIComponent(getString(value))}`
     }, url.startsWith('http') ? url : (this.baseUrl + url))
 
     // 请求体数据处理
@@ -76,7 +76,7 @@ class Http {
         options.body = Object.entries({
           ...options?.data
         }).reduce((t, [key, value]: any[], i) => {
-          return t += `${i ? '&' : ''}${key}=${getString(value)}`
+          return t += `${i ? '&' : ''}${key}=${encodeURIComponent(getString(value))}`
         }, '')
       } else {
         if (options.data instanceof FormData) {
